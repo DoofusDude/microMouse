@@ -198,59 +198,6 @@ void main(void)
     leftMotor = MOTOR_STATUS_STOP;
     rightMotor = MOTOR_STATUS_STOP;
 
-/*
-    //
-    // Now we are going to set the mouse operation mode according to rocker switches 1 & 2 as follows:
-    // --------------------------------------------------------------
-    // SW1    | SW2    | Operation Mode               | LED8* | LED9*
-    // --------------------------------------------------------------
-    // Open** | Open   | MOUSE_MODE_OBSTACLE_AVOIDING | ON    | ON
-    // Open   | Closed | MOUSE_MODE_LINE_FOLLOWING    | ON    | OFF
-    // Closed | Open   | MOUSE_MODE_COMBAT            | OFF   | ON
-    // Closed | Closed | MOUSE_MODE_DEBUG             | OFF   | OFF
-    // --------------------------------------------------------------
-    // *  We assume that PTC2 and PTC6 are connected to LED8 and LED9, respectively.
-    // ** These switches are active low and input a logic high when set to the open position.
-    //
-    PTAPE = 0xFF;   // enable port A pullups for push button switch
-    PTADD = 0x00;   // set port A as input; switches 1 and 2 are connected to port A0 and A1, respectively
-    
-    sw1 = PTAD_PTAD0;  // read switch configuration
-    sw2 = PTAD_PTAD1;  // read switch configuration
-
-    PTCDD = 0xFF;   // set port C as output    
-    PTCD =  0xFF;   // turn off LEDs
-
-    // simple FSM for motor status handling
-    if (sw1 == 1) {
-        if (sw2 == 1) {
-            mouseMode = MOUSE_MODE_OBSTACLE_AVOIDING;
-            PTCD_PTCD2 = 1;
-            PTCD_PTCD6 = 1;
-            AvoidObstacle();
-        }
-        else {
-            mouseMode = MOUSE_MODE_LINE_FOLLOWING;
-            PTCD_PTCD2 = 1;
-            PTCD_PTCD6 = 0;
-            LineFollowing();
-        }
-    }
-    else {
-        if (sw2 == 1) {
-            mouseMode = MOUSE_MODE_COMBAT;
-            PTCD_PTCD2 = 0;
-            PTCD_PTCD6 = 1;
-        }
-        else {
-            mouseMode = MOUSE_MODE_DEBUG;
-            // reserved for another mode in the future
-            PTCD_PTCD2 = 0;
-            PTCD_PTCD6 = 0;
-            Debug();
-        }
-    }
-*/
 
     PTAPE = 0xFF;   // enable port A pullups for push button switch
     PTADD = 0x00;   // set port A as input; switches 1 and 2 are connected to port A0 and A1, respectively
